@@ -15,12 +15,14 @@ import static java.awt.Color.getHSBColor;
 public class Bola {
     public List<Bola> bolas;
     private Color cor;
-    private int pos_x, pos_y, direcao_x, direcao_y;
-    private int form_largura, form_altura;
+    private int altura, largura, pos_x, pos_y, direcao_x, direcao_y;
+    private int form_largura, form_altura, tamanho;
+    public boolean removido;
    
     public Bola(int form_largura, int form_altura, Color cor) {
         pos_x = new Random().nextInt(350);
         pos_y = new Random().nextInt(350);
+        tamanho = 30;
         this.cor = cor;
         int num_random = new Random().nextInt(40);
         
@@ -49,8 +51,28 @@ public class Bola {
 
     public void colide_bola() {
         for(Bola bola : bolas) {
-            if (x != bola.pos_x && bola.pos_y &&  !bola.)
+            if (this.pos_x != bola.pos_x && this.pos_y != bola.pos_y &&  !bola.removido && !this.removido) {
+                if ((this.pos_x >= (bola.pos_x - (this.tamanho - (this.tamanho / 5)))
+                    && this.pos_x <= (bola.pos_x + (this.tamanho - (this.tamanho / 5))))
+                    && (this.pos_y >= (bola.pos_y - (this.tamanho - (this.tamanho / 5)))
+                    && this.pos_y <= (bola.pos_y + (this.tamanho - (this.tamanho / 5))))) {
+                    if (this.cor == Color.BLUE && bola.cor == Color.RED) {
+                        remover_aumentar(bola);
+                    } else if (this.cor == Color.RED && bola.cor == Color.GREEN) {
+                        remover_aumentar(bola);
+                    } else if (this.cor == Color.GREEN && bola.cor == Color.BLUE) {
+                        remover_aumentar(bola);
+                    }
+                }
+            }
         }
+    }
+
+    public void remover_aumentar(Bola bola) {
+        bola.altura = bola.largura = 0;
+        bola.removido = true;
+        int aux = altura;
+        altura = largura = tamanho = (int) (aux + (aux * 0.3));
     }
 
     public void draw(Graphics g) {
@@ -66,5 +88,12 @@ public class Bola {
     public void move() {
         pos_x += direcao_x;
         pos_y += direcao_y;
+    }
+
+    public int qual_cor(Color cor) {
+        if (cor == Color.RED) return 1;
+        if (cor == Color.GREEN) return 1;
+        if (cor == Color.BLUE) return 1;
+        return 0;
     }
 }

@@ -120,10 +120,11 @@ public class FrmPrincipal extends javax.swing.JFrame implements Runnable {
             g.setColor(Color.white);
             g.fillRect(0, 0, getWidth(), getHeight());    
 
-            for (Bola b : bolas) {
-                b.draw(g);
-                b.move();
-                b.limits();
+            for (Bola bola : bolas) {
+                bola.draw(g);
+                bola.move();
+                bola.limits();
+                bola.colisao(bolas);
             }
 
             g.dispose();
@@ -135,9 +136,34 @@ public class FrmPrincipal extends javax.swing.JFrame implements Runnable {
             }
 
             getBufferStrategy().show();
+
+            if (this.colidiu(bolas)){
+                resetar();
+            }
         }
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    // End of variables declaration//GEN-END:variables
+    private boolean colidiu(List<Bola> bolas) {
+        int red = 0;
+        int green = 0;
+        int blue = 0;
+        
+        for (Bola b : bolas) {
+          if (!b.removido) {
+                red += b.qual_cor(Color.RED);
+                green += b.qual_cor(Color.GREEN);
+                blue += b.qual_cor(Color.BLUE);
+          }
+        }
+        
+        return (red > 0 && green == 0 && blue == 0) || 
+                (red == 0 && green > 0 && blue == 0) || 
+                (red == 0 && green == 0 && blue > 0);
+    }
+
+    public void resetar()
+    {
+        System.exit(0);
+    }
+
 }
