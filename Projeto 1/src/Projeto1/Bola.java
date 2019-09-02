@@ -14,13 +14,14 @@ import static java.awt.Color.getHSBColor;
 
 public class Bola {
     public List<Bola> bolas;
-    private Color cor = getHSBColor(new Random().nextFloat(), new Random().nextFloat(), new Random().nextFloat());
+    private Color cor;
     private int pos_x, pos_y, direcao_x, direcao_y;
     private int form_largura, form_altura;
    
-    public Bola(int form_largura, int form_altura) {
+    public Bola(int form_largura, int form_altura, Color cor) {
         pos_x = new Random().nextInt(350);
         pos_y = new Random().nextInt(350);
+        this.cor = cor;
         int num_random = new Random().nextInt(40);
         
         if (num_random < 10) {

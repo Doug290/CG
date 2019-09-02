@@ -103,8 +103,16 @@ public class FrmPrincipal extends javax.swing.JFrame implements Runnable {
     public void run() {
         List<Bola> bolas = new ArrayList<>();
        
-        for (int i = 0; i < 100; i++) {
-            bolas.add(new Bola(getWidth(), getHeight()));
+        for (int i = 0; i < 30; i++) {
+            if(i<=10)  {
+                bolas.add(new Bola(getWidth(), getHeight(), Color.RED));
+            }
+            if(i<=20)  {
+                bolas.add(new Bola(getWidth(), getHeight(), Color.GREEN));
+            }
+            if(i<=30)  {
+                bolas.add(new Bola(getWidth(), getHeight(), Color.BLUE));
+            }
         }
         
         while (true) {
