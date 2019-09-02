@@ -42,6 +42,17 @@ public class Bola {
         this.form_altura = form_altura;
     }
 
+    public void colisao(List<Bola> bolas) {
+        this.bolas = bolas;
+        colide_bola();
+    }
+
+    public void colide_bola() {
+        for(Bola bola : bolas) {
+            if (x != bola.pos_x && bola.pos_y &&  !bola.)
+        }
+    }
+
     public void draw(Graphics g) {
         g.setColor(cor);
         g.fillOval(pos_x, pos_y, 10, 10); 
