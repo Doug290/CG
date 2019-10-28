@@ -44,7 +44,7 @@ function main() {
   gl.clear(gl.COLOR_BUFFER_BIT);
 
   // Draw 
-  gl.drawArrays(gl.POINTS, 0, n); //See line 7 for point size
+  //gl.drawArrays(gl.POINTS, 0, n); //See line 7 for point size
   //gl.drawArrays(gl.LINES, 0, n);
   //gl.drawArrays(gl.LINE_STRIP, 0, n);
   //gl.drawArrays(gl.LINE_LOOP, 0, n);
