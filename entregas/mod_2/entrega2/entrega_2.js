@@ -104,7 +104,7 @@ function initBuffers() {
   pyramidVertexColorBuffer = gl.createBuffer();
   gl.bindBuffer(gl.ARRAY_BUFFER, pyramidVertexColorBuffer);
   var colors = [
-    1.0, 0.0, 0.0, 1.0,
+    1.0, 1.0, 1.0, 1.0,
     0.0, 1.0, 0.0, 1.0,
     0.0, 0.0, 1.0, 1.0,
     1.0, 0.0, 0.0, 1.0,
@@ -161,6 +161,6 @@ var canvas = document.getElementById("webgl");
 initGL(canvas);
 initShaders()
 initBuffers();
-gl.clearColor(0.0, 0.0, 0.0, 1.0);
+gl.clearColor(0.0, 0.0, 0.0, 0.0);
 gl.enable(gl.DEPTH_TEST);
 tick();
